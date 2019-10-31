@@ -3,15 +3,16 @@ package com.github.florent37.singledateandtimepicker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
 import com.github.florent37.singledateandtimepicker.widget.WheelAmPmPicker;
 import com.github.florent37.singledateandtimepicker.widget.WheelDayOfMonthPicker;
 import com.github.florent37.singledateandtimepicker.widget.WheelDayPicker;
@@ -441,7 +442,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
             final Date dayDate = daysPicker.getCurrentDate();
             calendar.setTime(dayDate);
         } else {
-            if (displayMonth) {
+            if (displayMonth && monthPicker.getCurrentMonth() > 0) {
                 calendar.set(Calendar.MONTH, monthPicker.getCurrentMonth());
             }
 
@@ -453,7 +454,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
                 int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
                 if (daysOfMonthPicker.getCurrentDay() >= daysInMonth) {
                     calendar.set(Calendar.DAY_OF_MONTH, daysInMonth);
-                } else {
+                } else if (daysOfMonthPicker.getCurrentDay() >= 0) {
                     calendar.set(Calendar.DAY_OF_MONTH, daysOfMonthPicker.getCurrentDay() + 1);
                 }
             }
@@ -479,7 +480,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
             calendar.setTimeZone(DateHelper.getTimeZone());
             calendar.setTime(date);
             this.defaultDate = calendar.getTime();
-            
+
             updateDaysOfMonth();
 
             for (WheelPicker picker : pickers) {
