@@ -1,9 +1,9 @@
 package com.github.florent37.sample.singledateandtimepicker;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
 import java.util.Date;
 

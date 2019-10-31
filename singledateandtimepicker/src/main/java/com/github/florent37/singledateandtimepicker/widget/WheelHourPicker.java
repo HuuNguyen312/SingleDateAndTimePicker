@@ -1,7 +1,7 @@
 package com.github.florent37.singledateandtimepicker.widget;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 
 import com.github.florent37.singledateandtimepicker.DateHelper;
@@ -79,6 +79,7 @@ public class WheelHourPicker extends WheelPicker<String> {
         return super.findIndexOfDate(date);
     }
 
+    @Override
     protected String getFormattedValue(Object value) {
         Object valueItem = value;
         if (value instanceof Date) {
